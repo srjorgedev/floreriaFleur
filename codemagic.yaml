@@ -1,0 +1,17 @@
+workflows:
+  <nombre_del_workflow>: # Puedes darle el nombre que desees a tu flujo de trabajo
+    name: My React Native Workflow
+    environment:
+      flutter: dev # Esto especifica la versión de Flutter a utilizar
+    scripts:
+      # Comandos para instalar dependencias y construir la aplicación
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Build iOS
+        script: |
+          npx react-native run-ios --configuration Release
+      # Si usas Gradle para Android, podrías tener un paso similar para compilar Android
+    artifacts:
+      # Archivos que deseas guardar como resultados de la compilación
+      - build/ios/*.ipa
