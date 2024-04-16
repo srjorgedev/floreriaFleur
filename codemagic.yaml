@@ -1,4 +1,4 @@
-orkflows:
+workflows:
   react-native:
     name: React Native App
     scripts:
