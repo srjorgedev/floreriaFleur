@@ -1,17 +1,19 @@
-workflows:
-  react-native-ios:
-    name: React Native iOS
-    max_build_duration: 120
-    instance_type: mac_mini_m1
+orkflows:
+  react-native:
+    name: React Native App
     scripts:
-      - name: Install npm dependencies
-        script: | 
+      - name: Install dependencies
+        script: |
           npm install
-      - name: Build IPA for distribution
-        script: | 
-          npx react-native run-ios --configuration=Release --no-packager
-          mkdir -p $CM_BUILD_DIR/ios/ipa
-          xcodebuild -exportArchive -archivePath "$HOME/Library/Developer/Xcode/DerivedData/YourProjectName/Build/Products/Release-iphoneos/YourProjectName.app" -exportPath $CM_BUILD_DIR/ios/ipa -exportOptionsPlist exportOptions.plist
+      - name: Run tests
+        script: |
+          npm test
+      - name: Build Android app
+        script: |
+          npx react-native run-android
+      - name: Build iOS app
+        script: |
+          npx react-native run-ios
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
