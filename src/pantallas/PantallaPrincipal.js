@@ -12,7 +12,7 @@ export default function PantallaPrincipal({ navigation }) {
                         <FlorCard
                             Imagen={Flor.Imagen}
                             Cantidad={Flor.CantidadDeFLores}
-                            key={Flor.Id} Funcion={() => navigation.navigate('Extra', { screen: 'Flor', params: { key: Flor.Id, origin: DatosFloresInicio } })} />
+                            key={Flor.Id} Funcion={() => navigation.navigate('FlorPila', { data: Flor})} />
                     )
                 })}
             </View>

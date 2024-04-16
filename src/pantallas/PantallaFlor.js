@@ -3,8 +3,10 @@ import Layout from "../layout/Layout"
 import { View, Text, StyleSheet, Image, Pressable, Alert } from "react-native"
 
 export default function PantallaFlor({ route, navigation }) {
-    const { key, origin } = route.params
-    const Flor = origin.find(({ Flor }) => Flor.Id === key)
+    const { data } = route.params
+    const navegador = route.name
+
+
 
     return (
         <Layout>
@@ -12,19 +14,19 @@ export default function PantallaFlor({ route, navigation }) {
                 <View style={estilos.container}>
                     <View>
                         <View style={estilos.header}>
-                            <Text style={{ ...estilos.title }}>{Flor.Flor.Nombre}</Text>
+                            <Text style={{ ...estilos.title }}>{data.Nombre}</Text>
                             <Pressable onPress={() => navigation.goBack()}>
                                 <View style={estilos.cerrar}>
                                     <Text style={{ ...estilos.text, fontSize: 20 }}>X</Text>
                                 </View>
                             </Pressable>
                         </View>
-                        <Text style={{ ...estilos.textoDestacado, fontSize: 25, fontWeight: 'bold' }}>${Flor.Flor.Precio}</Text>
-                        <Image source={{ uri: Flor.Flor.Imagen }} style={estilos.imagen} />
-                        <Text style={{ ...estilos.text, fontSize: 22, marginTop: 10 }}>{Flor.Flor.Descripcion}</Text>
+                        <Text style={{ ...estilos.textoDestacado, fontSize: 25, fontWeight: 'bold' }}>${data.Precio}</Text>
+                        <Image source={{ uri: data.Imagen }} style={estilos.imagen} />
+                        <Text style={{ ...estilos.text, fontSize: 22, marginTop: 10 }}>{data.Descripcion}</Text>
                         <Text style={{ color: '#222222', fontSize: 15, marginTop: 8, fontWeight: 'bold' }}>Todos los pedidos son para enviar a domicilio</Text>
                     </View>
-                    <Pressable onPress={() => Alert.alert('Mensaje', 'Comprado')}>
+                    <Pressable onPress={() => navigation.navigate('Pago', { navigation: navigation })}>
                         <View style={estilos.boton}>
                             <Text style={{ color: "#f1f1f1", fontSize: 22 }}>
                                 Comprar

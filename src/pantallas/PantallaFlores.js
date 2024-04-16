@@ -3,8 +3,16 @@ import Layout from "../layout/Layout"
 import Boton from "../components/Boton"
 import FlorIcono from "../iconos/Flor"
 import { Rojo } from "../estilos/PaletaColores"
+import { DatosGirasoles } from "../data/Girasoles"
+import { DatosRosas } from "../data/Rosas"
+import { DatosTulipanes } from "../data/Tulipanes"
+import { DatosPeonias } from "../data/Peonias"
+import { DatosJazmines } from "../data/Jazmines"
+import { useNavigation } from "@react-navigation/native"
+import { DatosGerberas } from "../data/Gerberas"
 
 export default function PantallaFlores() {
+    const Navegar = useNavigation()
     return (
         <Layout>
             <View style={estilos.headerFlor}>
@@ -13,12 +21,18 @@ export default function PantallaFlores() {
             </View>
 
             <View style={estilos.contenedorBotones}>
-                <Boton Texto="ROSAS" Fondo="#70f8ff"/>
-                <Boton Texto="GIRASOLES" Fondo="#fffd70"/>
-                <Boton Texto="PEONIAS" Fondo="#ff70cf"/>
-                <Boton Texto="GERBERAS" Fondo="#ffcf70"/>
-                <Boton Texto="TULIPANES" Fondo="#ff7088"/>
-                <Boton Texto="JAZMINES" Fondo="#d1d1d1"/>
+                <Boton Texto="ROSAS" Fondo="#70f8ff"
+                    Funcion={() => Navegar.navigate('CatalogoFlores', { data: DatosRosas })} />
+                <Boton Texto="GIRASOLES" Fondo="#fffd70"
+                    Funcion={() => Navegar.navigate('CatalogoFlores', { data: DatosGirasoles })} />
+                <Boton Texto="PEONIAS" Fondo="#ff70cf"
+                    Funcion={() => Navegar.navigate('CatalogoFlores', { data: DatosPeonias })} />
+                <Boton Texto="GERBERAS" Fondo="#ffcf70"
+                    Funcion={() => Navegar.navigate('CatalogoFlores', { data: DatosGerberas })} />
+                <Boton Texto="TULIPANES" Fondo="#ff7088"
+                    Funcion={() => Navegar.navigate('CatalogoFlores', { data: DatosTulipanes })} />
+                <Boton Texto="JAZMINES" Fondo="#d1d1d1"
+                    Funcion={() => Navegar.navigate('CatalogoFlores', { data: DatosJazmines })} />
             </View>
         </Layout>
     )
