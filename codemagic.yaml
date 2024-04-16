@@ -9,9 +9,9 @@ workflows:
           npm install
       - name: Build IPA for distribution
         script: | 
-          npx react-native run-ios --configuration Release
+          npx react-native run-ios --configuration=Release --no-packager
           mkdir -p $CM_BUILD_DIR/ios/ipa
-          xcodebuild -exportArchive -archivePath $HOME/Library/Developer/Xcode/Archives/<nombre_de_tu_proyecto>.xcarchive -exportPath $CM_BUILD_DIR/ios/ipa -exportOptionsPlist exportOptions.plist
+          xcodebuild -exportArchive -archivePath "$HOME/Library/Developer/Xcode/DerivedData/YourProjectName/Build/Products/Release-iphoneos/YourProjectName.app" -exportPath $CM_BUILD_DIR/ios/ipa -exportOptionsPlist exportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
